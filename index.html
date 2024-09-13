@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-ixon" href="brain-circuit.png">
+    <title>Hex-code generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#"><li>home</li></a>
+            <a href="#"><li>about</li></a>
+            <a href="#"><li>contact</li></a>
+            <a href="#"><li>lindin</li></a>
+            <a href="https://leetcode.com/problemset/" target="_blank"><li>leetcode</li></a>
+        </nav>
+    </header>
+    <section>
+        <div class="hero">
+            <div>
+                <button id="mybtn1">#6ec1da</button>
+                <button id="mybtn2">#5d5187</button>
+            </div>
+                <h2>copy your code here</h2>
+                 <div class="copycode">
+                     <p> background-image: linear-gradient(to right, #6ec1da, #5d5187)</p>
+                </div>
+        </div>
+    </section>
+    
+    <!-- <script src="script.js"></script> -->
+     <script>
+         // alert('hello');
+            let btn1=document.getElementById('mybtn1');
+            let btn2=document.getElementById('mybtn2');
+            let cpycode=document.querySelector('.copycode');
+            let rgb1='#6ec1da';
+            let rgb2='#5d5187';
+
+
+           //hexcode generate kr raha hai
+            const generatehexcode=()=>{
+                let hexvalue="0123456789abcdef"
+                let value="#";
+                for(let i=0;i<6;i++){
+                 value=value+hexvalue[Math.floor(Math.random()*16)]; 
+             }
+             return value;
+            };
+
+            const handlebutton1 =()=>{
+                 rgb1= generatehexcode();
+                // console.log(generatehexcode());  
+                btn1.textContent= rgb1; 
+                document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1}, ${rgb2})`; 
+                cpycode.textContent=`background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`; 
+            };
+
+
+            const handlebutton2 =()=>{
+                rgb2 = generatehexcode();
+                // console.log(generatehexcode());
+                btn2.textContent= rgb2; 
+                document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1} ,${rgb2})`; 
+                cpycode.textContent=`background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`; 
+
+            } 
+
+
+            btn1.addEventListener("click",()=>{
+                handlebutton1();
+            });
+            btn2.addEventListener('click',handlebutton2);
+
+            cpycode.addEventListener('click',()=>{
+                navigator.clipboard.writeText(cpycode.innerHTML);
+                alert('text copied');
+            });
+    </script> 
+</body>
+</html>
